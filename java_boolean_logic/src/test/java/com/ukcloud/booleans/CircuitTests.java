@@ -17,8 +17,8 @@ public class CircuitTests {
         final And andGate = new And();
 
         final Circuit circuit = new Circuit();
-        circuit.add(new Connection(orGateA, andGate, 0));
-        circuit.add(new Connection(orGateB, andGate, 1));
+        circuit.add(new Connection(orGateA.outputPin(), andGate.inputPin(0)));
+        circuit.add(new Connection(orGateB.outputPin(), andGate.inputPin(1)));
 
         orGateA.setInput(0, true);
         orGateA.setInput(1, false);
@@ -42,10 +42,10 @@ public class CircuitTests {
         // deliberately add the connections back-to-front.
 
         final Circuit circuit = new Circuit();
-        circuit.add(new Connection(gateD, gateE, 0));
-        circuit.add(new Connection(gateC, gateD, 0));
-        circuit.add(new Connection(gateB, gateC, 0));
-        circuit.add(new Connection(gateA, gateB, 0));
+        circuit.add(new Connection(gateD.outputPin(), gateE.inputPin(0)));
+        circuit.add(new Connection(gateC.outputPin(), gateD.inputPin(0)));
+        circuit.add(new Connection(gateB.outputPin(), gateC.inputPin(0)));
+        circuit.add(new Connection(gateA.outputPin(), gateB.inputPin(0)));
 
         gateA.setInput(true);
         assertTrue(circuit.propagate() > 0);    // we do not know exactly how many loops to expect.
@@ -62,8 +62,8 @@ public class CircuitTests {
         final Not gate = new Not();
         final Circuit circuit = new Circuit();
 
-        circuit.add(new Connection(gate, gate, 0));    // connect the output back to the input
-        circuit.propagate();                           // no steady state. oscillates forever.
+        circuit.add(new Connection(gate.outputPin(), gate.inputPin(0)));    // connect the output back to the input
+        circuit.propagate();                                                // no steady state. oscillates forever.
     }
 
     @Rule
@@ -77,7 +77,7 @@ public class CircuitTests {
         final Not gate = new Not();
         final Circuit circuit = new Circuit(123);
 
-        circuit.add(new Connection(gate, gate, 0));    // connect the output back to the input
-        circuit.propagate();                           // no steady state. oscillates forever.
+        circuit.add(new Connection(gate.outputPin(), gate.inputPin(0)));    // connect the output back to the input
+        circuit.propagate();                                                // no steady state. oscillates forever.
     }
 }

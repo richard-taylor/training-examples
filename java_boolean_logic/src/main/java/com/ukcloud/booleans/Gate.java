@@ -3,40 +3,30 @@ package com.ukcloud.booleans;
 /**
  * Base class for logic gates.
  *
- * There can be any number of inputs and a single output.
+ * A gate is a specialisation of a logic unit which has exactly one boolean output.
  */
-public abstract class Gate {
-
-    final private boolean[] inputs;
+public abstract class Gate extends LogicUnit {
 
     public Gate(int numberOfInputs) {
-        if (numberOfInputs < 1)
-            throw new IllegalArgumentException(String.format("Gate fan-in of %d must be at least 1.", numberOfInputs));
-
-        inputs = new boolean[numberOfInputs];
-    }
-
-    public void setInput(int index, boolean value) {
-        inputs[index] = value;
-    }
-
-    public boolean getInput(int index) {
-        return inputs[index];
-    }
-
-    public void setInputs(boolean[] inputs) {
-        if (null == inputs)
-            throw new IllegalArgumentException("Inputs array cannot be null");
-        if (inputs.length != this.inputs.length)
-            throw new IllegalArgumentException(
-                    String.format("Inputs array length of %d does not match gate fan-in of %d.", inputs.length, this.inputs.length));
-
-        System.arraycopy(inputs, 0, this.inputs, 0, this.inputs.length);
-    }
-
-    public boolean[] getInputs() {
-        return inputs;
+        super(numberOfInputs, 1);
     }
 
     public abstract boolean getOutput();
+
+    public OutputPin outputPin() {
+        return outputPin(0);
+    }
+
+    @Override
+    public boolean getOutput(int index) {
+        if (index != 0)
+            throw new IllegalArgumentException(String.format("Gate output index %d must be 0.", index));
+
+        return getOutput();
+    }
+
+    @Override
+    public boolean[] getOutputs() {
+        return new boolean[] { getOutput() };
+    }
 }

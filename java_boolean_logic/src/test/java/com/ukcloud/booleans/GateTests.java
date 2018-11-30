@@ -16,10 +16,10 @@ public class GateTests {
         assertFalse(gate.getInput(0));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void zeroInputsIsNotOK() {
-        final Gate gate = new And(0);
-        gate.getOutput();
+    @Test
+    public void zeroInputsIsOK() {
+        final Gate gate = new True();
+        assertTrue(gate.getOutput());
     }
 
     @Test

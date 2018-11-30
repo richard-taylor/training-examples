@@ -1,26 +1,24 @@
 package com.ukcloud.booleans;
 
 /**
- * A connection joins the output of one logic gate to a specific input of
- * another logic gate.
+ * A connection joins a specific output of one logic unit to a specific input of
+ * another logic unit.
  */
 public class Connection {
 
-    private final Gate sourceGate;
-    private final Gate sinkGate;
-    private final int sinkIndex;
+    private final OutputPin sourcePin;
+    private final InputPin sinkPin;
 
     private boolean state;
 
-    public Connection(final Gate sourceGate, final Gate sinkGate, int sinkIndex) {
-        this.sourceGate = sourceGate;
-        this.sinkGate = sinkGate;
-        this.sinkIndex = sinkIndex;
+    public Connection(final OutputPin sourcePin, InputPin sinkPin) {
+        this.sourcePin = sourcePin;
+        this.sinkPin = sinkPin;
     }
 
     public boolean propagate() {
-        state = sourceGate.getOutput();
-        sinkGate.setInput(sinkIndex, state);
+        state = sourcePin.getOutput();
+        sinkPin.setInput(state);
         return state;
     }
 

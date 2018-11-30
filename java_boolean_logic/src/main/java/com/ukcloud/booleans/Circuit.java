@@ -3,7 +3,7 @@ package com.ukcloud.booleans;
 import java.util.*;
 
 /**
- * A circuit is a collection of connections between logic gates.
+ * A circuit is a collection of connections between logic units.
  */
 public class Circuit {
 

@@ -11,7 +11,7 @@ public class ConnectionTests {
         final Or orGate = new Or();
         final And andGate = new And();
 
-        final Connection connection = new Connection(orGate, andGate, 1);
+        final Connection connection = new Connection(orGate.outputPin(), andGate.inputPin(1));
 
         orGate.setInput(0, true);
         orGate.setInput(1, true);
