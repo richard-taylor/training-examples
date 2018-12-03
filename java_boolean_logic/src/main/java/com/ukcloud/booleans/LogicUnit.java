@@ -28,17 +28,7 @@ public abstract class LogicUnit {
         return inputs[index];
     }
 
-    public void setInputs(boolean[] inputs) {
-        if (null == inputs)
-            throw new IllegalArgumentException("Inputs array cannot be null");
-        if (inputs.length != this.inputs.length)
-            throw new IllegalArgumentException(
-                    String.format("Input length of %d does not match fan-in of %d.", inputs.length, this.inputs.length));
-
-        System.arraycopy(inputs, 0, this.inputs, 0, this.inputs.length);
-    }
-
-    public boolean[] getInputs() {
+    protected boolean[] getInputs() {
         return inputs;
     }
 
@@ -53,5 +43,4 @@ public abstract class LogicUnit {
     }
 
     public abstract boolean getOutput(int index);
-    public abstract boolean[] getOutputs();
 }

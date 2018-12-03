@@ -24,9 +24,4 @@ public abstract class Gate extends LogicUnit {
 
         return getOutput();
     }
-
-    @Override
-    public boolean[] getOutputs() {
-        return new boolean[] { getOutput() };
-    }
 }
