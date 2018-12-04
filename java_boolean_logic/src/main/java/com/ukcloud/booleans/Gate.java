@@ -20,7 +20,7 @@ public abstract class Gate extends LogicUnit {
     @Override
     public boolean getOutput(int index) {
         if (index != 0)
-            throw new IllegalArgumentException(String.format("Gate output index %d must be 0.", index));
+            throw new IndexOutOfBoundsException(String.format("Gate output index %d must be 0.", index));
 
         return getOutput();
     }

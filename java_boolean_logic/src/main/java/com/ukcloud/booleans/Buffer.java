@@ -19,6 +19,9 @@ public class Buffer extends LogicUnit {
 
     @Override
     public boolean getOutput(int index) {
+        if (index >= numberOfOutputs)
+            throw new IndexOutOfBoundsException(String.format("Index %d must be less than %d.", index, numberOfOutputs));
+
         return getInput(0);
     }
 }

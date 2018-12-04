@@ -9,7 +9,9 @@ package com.ukcloud.booleans;
  */
 public abstract class LogicUnit {
 
-    final private boolean[] inputs;
+    private final boolean[] inputs;
+    protected final int numberOfInputs;
+    protected final int numberOfOutputs;
 
     public LogicUnit(int numberOfInputs, int numberOfOutputs) {
         if (numberOfInputs < 0)
@@ -18,6 +20,8 @@ public abstract class LogicUnit {
             throw new IllegalArgumentException(String.format("Fan-out of %d must be positive.", numberOfOutputs));
 
         inputs = new boolean[numberOfInputs];
+        this.numberOfInputs = numberOfInputs;
+        this.numberOfOutputs = numberOfOutputs;
     }
 
     public void setInput(int index, boolean value) {

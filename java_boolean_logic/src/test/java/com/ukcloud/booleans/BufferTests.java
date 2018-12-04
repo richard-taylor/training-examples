@@ -31,4 +31,10 @@ public class BufferTests {
         assertFalse(buffer.getOutput(1));
         assertFalse(buffer.getOutput(2));
     }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void noMoreThanAdvertised() {
+        final Buffer buffer = new Buffer(1);
+        buffer.getOutput(1);
+    }
 }
