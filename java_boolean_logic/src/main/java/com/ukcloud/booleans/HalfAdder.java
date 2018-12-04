@@ -1,10 +1,13 @@
 package com.ukcloud.booleans;
 
 /**
- * A circuit with two inputs A, B and two outputs S, C.
+ * A half-adder circuit with two inputs A, B and two outputs S, C.
  *
  * S is the "sum" of A and B = A XOR B
  * C is the "carry" bit = A AND B
+ *
+ * It is called a half-adder because it does not accept a carry from a previous bit;
+ * a full one-bit adder requires two half-adders.
  */
 public class HalfAdder extends Circuit {
 

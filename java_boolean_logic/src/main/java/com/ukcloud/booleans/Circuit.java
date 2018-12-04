@@ -25,6 +25,10 @@ public class Circuit {
         connections.add(connection);
     }
 
+    public void add(final Circuit other) {
+        connections.addAll(other.connections);
+    }
+
     public int propagate() {
 
         // We do not know the "right" order to evaluate the connections in.
