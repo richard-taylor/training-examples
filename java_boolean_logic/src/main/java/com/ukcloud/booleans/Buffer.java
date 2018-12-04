@@ -13,6 +13,10 @@ public class Buffer extends LogicUnit {
         setInput(0, value);
     }
 
+    public InputPin inputPin() {
+        return inputPin(0);
+    }
+
     @Override
     public boolean getOutput(int index) {
         return getInput(0);
