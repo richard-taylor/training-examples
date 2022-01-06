@@ -9,8 +9,8 @@ public class Circuit {
 
     public static final int DEFAULT_PROPAGATION_LIMIT = 1000;
 
-    private final List<Connection> connections = new ArrayList();
-    private final Map<Connection,Boolean> states = new HashMap();
+    private final List<Connection> connections = new ArrayList<>();
+    private final Map<Connection,Boolean> states = new HashMap<>();
     private final int propagationLimit;
 
     public Circuit() {
@@ -35,9 +35,8 @@ public class Circuit {
         // So randomise the order and keep propagating until nothing changes.
         // Or we get bored...
 
-        iterate();
+        int changes = iterate();
         int iterations = 1;
-        int changes = 1;
 
         while (changes > 0 && iterations < propagationLimit) {
             changes = iterate();
