@@ -1,3 +1,4 @@
+import printers
 import transformers
 
 # Play the fizz buzz game.
@@ -11,8 +12,12 @@ import transformers
 
 class FizzBuzz:
 
-    def __init__(self, printer, transformer = None):
-        self.printer = printer;
+    def __init__(self, printer = None, transformer = None):
+        if printer is None:
+            self.printer = printers.Printer()
+        else:
+            self.printer = printer;
+
         if transformer is None:
             self.transformer = transformers.TransformCommon()
         else:
@@ -21,3 +26,7 @@ class FizzBuzz:
     def play(self):
         for i in range(1, 101):
             self.printer.print(self.transformer.number_to_string(i))
+
+if __name__ == '__main__':
+    fizzbuzz = FizzBuzz()
+    fizzbuzz.play()
